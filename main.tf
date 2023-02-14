@@ -19,5 +19,6 @@ resource "aws_instance" "app_server" {
 
   tags = {
     Name = "hello-aws3"
+    APP = "vue2048"
   }
 }
