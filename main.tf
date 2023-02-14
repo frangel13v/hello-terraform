@@ -10,7 +10,7 @@ terraform {
 }
 
 provider "aws" {
-  region  = "eu-west-1"
+  region = "eu-west-1"
 }
 
 resource "aws_instance" "app_server" {
@@ -19,6 +19,6 @@ resource "aws_instance" "app_server" {
 
   tags = {
     Name = "hello-aws3"
-    APP = "vue2048"
+    APP  = "vue2048"
   }
 }
