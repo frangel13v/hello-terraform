@@ -14,8 +14,11 @@ provider "aws" {
 }
 
 resource "aws_instance" "app_server" {
-  ami           = "ami-0b752bf1df193a6c4"
-  instance_type = "t2.micro"
+  ami                    = "ami-0b752bf1df193a6c4"
+  instance_type          = "t2.micro"
+  subnet_id              = "subnet-0a9ed036265226f0e"
+  vpc_security_group_ids = [ "sg-03a718e7ae6233cef" ]
+  key_name               = "clave-lucatic"
 
   tags = {
     Name = "hello-aws4"
