@@ -26,32 +26,8 @@ resource "aws_instance" "app_server" {
   }
 
 
-  connection {
-    type        = "ssh"
-    user        = "ec2-user"
-    private_key = file("~/.ssh/clave-lucatic.pem")
-    host        = self.public_ip
-  }
-
-  provisioner "file" {
-    source      = "../hello-2048/public_html"
-    destination = "/home/ec2-user/"
-  }
-
   provisioner "local-exec" {
-    command = "sleep 60 && ansible-playbook -i aws_ec2.yml hello-2048.yml"
-  }
-
-  provisioner "remote-exec" {
-    inline = [
-      "sudo amazon-linux-extras install -y docker",
-      "sudo service docker start",
-      "sudo systemctl docker start",
-      "usermod -a -G docker ec2-user",
-      "pip3 install docker-compose",
-      "docker pull ghcr.io/frangel13v/hello-2048/hello2048:latest",
-      "docker-compose up -d"
-    ]
+        command = "ansible-playbook -i aws_ec2.yml hello-2048.yml"
   }
 }
 
