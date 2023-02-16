@@ -9,7 +9,7 @@ pipeline {
     stages {
         stage('Deploy') {
             steps {
-                withAWS(credentials:'ruben-aws-credentials'){
+                withAWS(credentials:'angelfr-aws-credentials'){
                     sh 'terraform fmt'
                     sh 'terraform validate'
                     sh 'terraform apply -auto-approve'
