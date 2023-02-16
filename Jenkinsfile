@@ -10,7 +10,7 @@ pipeline {
         stage('Deploy') {
             steps {
                 withAWS(credentials: 'angelfr-aws-credentials') {
-                   sshagent(['amazon-ssh']) {
+                   sshagent(['ssh-amazon']) {
                         sh 'terraform init'
                         sh 'terraform fmt'
                         sh 'terraform validate'
