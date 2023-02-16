@@ -49,7 +49,7 @@ resource "aws_instance" "app_server" {
       "sudo systemctl docker start",
       "usermod -a -G docker ec2-user",
       "pip3 install docker-compose",
-      "docker pull ghcr.io/frangel13v/hello-2048/hello2048:latest"
+      "docker pull ghcr.io/frangel13v/hello-2048/hello2048:latest",
       "docker-compose up -d"
     ]
   }
